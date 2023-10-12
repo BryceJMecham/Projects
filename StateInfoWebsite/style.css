@@ -1,0 +1,258 @@
+:root {
+  --var-name: red;
+}
+
+body {
+  background-color: rgb(255, 170, 150);
+}
+
+#slcbgimg{
+  background-image: url(slc-large.jpg);
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+}
+
+#loganbgimg{
+  background-image: url(logan-large.jpg);
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+}
+
+#santaquinbgimg{
+  background-image: url(redbarn.jpg);
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+}
+
+.bodygrid {
+  display: grid;
+  grid-template-columns: auto 400px;
+  grid-template-areas: ". ." "section aside";
+  grid-gap: 5px;
+}
+
+header {
+  grid-area: header;
+  position: relative;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100px;
+  top: -50px;
+  padding-top: 150px;
+  left: -8px;
+  text-align: center;
+}
+
+#utahbgimg {
+  background-image: url(bg-large.jpg);
+  grid-area: header;
+  position: relative;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 400px;
+  top: -50px;
+  padding-top: 400px;
+  left: -8px;
+  text-align: center;
+  border-bottom: 8px solid black;
+}
+
+header h1 {
+  position: relative;
+  background-color: white;
+  text-align: center;
+  display: inline;
+  padding: 10px;
+  border: 1px solid black;
+  box-shadow: 0px 0px 3px 2px lightgray;
+  font-family: helvetica;
+  font-size: 5em;
+}
+
+header p {
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 0px 0px 3px 2px lightgray;
+}
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  border: 2px solid white;
+  color: lightblue;
+  background-color: orange;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  color: purple;
+  background-color: lightgray;
+}
+
+nav {
+  position: fixed;
+  background-color: orange;
+  
+  top: 0vh;
+  left: 0vw;
+  width: 100vw;
+
+  border: 1px solid gray;
+  box-shadow: 0px 0px 3px 2px lightgray;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: start;
+  grid-gap: 30px;
+  padding: 5px;
+  align-content: center;
+  margin: 15px;
+  margin-left: 80px;
+}
+
+.text{
+  text-align: center;
+  padding: 7px 15px;
+}
+
+nav img {
+  width: 50px;
+  position: absolute;
+  left: 15px;
+  top: 8px;
+}
+
+section {
+  grid-area: section;
+  padding: 15px;
+  border: 1px solid darkgray;
+  border-radius: 4px;
+  background-color: lightyellow;
+
+}
+
+section img {
+  float: left;
+  margin: 10px;
+}
+
+section div, section h3 {
+  padding: 10px;
+}
+
+.nofloat {
+  clear: both;
+}
+
+aside {
+  grid-area: aside;
+  padding: 10px;
+  border: 1px solid darkgray;
+  border-radius: 4px;
+  background-color: lightyellow;
+}
+
+.centertext {
+  text-align: center;
+}
+
+th, td, caption {
+  border: 2px solid black;
+  background-color: white;
+  padding: 5px;
+  margin: 2px;
+}
+
+label {
+  width: 80px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 10px;
+}
+
+input[type=text], input[type=email], textarea {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 3px;
+  font-family: handwriting;
+}
+
+input:focus {
+  background-color: lightblue;
+}
+
+input:invalid {
+  border: 2px solid rgb(250, 50, 50);
+}
+
+input:valid {
+  border: 2px solid lightgreen;
+}
+
+input[type=submit] {
+  width: 100px;
+  background-color: #09f;
+  color: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+ol {
+  position: relative; 
+  left: 20px;
+}
+
+@media all and (max-width: 800px) {
+  .bodygrid {
+    grid-template-columns: auto 200px;
+  }
+
+  #utahbgimg {
+    background-image: url(bg-medium.jpg);
+  }
+
+  #slcbgimg {
+    background-image: url(slc-medium.jpg);
+  }
+
+}
+
+@media all and (max-width: 600px) {
+  .bodygrid {
+    grid-template-columns: auto;
+    grid-template-areas: "section" "aside";
+  }
+
+  #slcbgimg {
+    background-image: url(slc-small.jpg);
+  }
+
+  #loganbgimg {
+    background-image: url(logan.jpg);
+  }
+
+  #santaquinbgimg {
+    background-image: url(redbarn-small.jpg);
+  }
+
+  header h1 {
+    font-size: 3em;
+  }
+
+  .grid {
+    grid-gap: 15px;
+  }
+}
+
