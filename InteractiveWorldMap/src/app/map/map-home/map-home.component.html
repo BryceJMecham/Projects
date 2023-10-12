@@ -1,0 +1,5 @@
+<div class="grid">
+	<app-map-ui (submitted)="onTerm($event)"></app-map-ui>
+	<app-info-list [info]="info" [countryName]="countryName" [capital]="capital" [continentName]="continentName" [population]="population" [errorMsg]="errorMsg" [region]="region" [income]="income"></app-info-list>
+	<app-search-bar (submitted)="onTerm($event)"></app-search-bar>
+</div>

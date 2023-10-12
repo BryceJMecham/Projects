@@ -1,0 +1,23 @@
+.grid{
+    display: grid;
+    grid-template-areas: 
+        "map search"
+        "map info"
+        "map info";
+    grid-gap: 20px;
+}
+
+app-map-ui{
+    grid-area: map;
+}
+app-search-bar{
+    grid-area: search;
+}
+app-info-list{
+    grid-area: info;
+}
+
+#error {
+    color: red;
+    font-weight: bold;
+}

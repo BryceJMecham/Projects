@@ -1,0 +1,17 @@
+.Highlight:hover {
+    stroke: orange;
+    fill: yellowgreen !important;
+    cursor: pointer;
+}
+.show {
+    stroke: red;
+    fill: red !important;
+    cursor: pointer;
+}
+.shows {
+    stroke: yellow;
+    fill: pink;
+    cursor: pointer;
+}
+
+

@@ -1,0 +1,4 @@
+<form (submit)="onSubmit($event)">
+    <label for="searchTerm" >Enter a country and hit enter:</label><br> 
+    <input id="searchTerm" (input)="term = $any($event.target).value" />
+</form>

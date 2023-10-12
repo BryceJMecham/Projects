@@ -1,0 +1,12 @@
+th{
+    text-align: left;
+}
+table{
+    padding: 10px;
+    margin: 10px;
+}
+
+#error {
+    color: red;
+    font-weight: bold;
+}
