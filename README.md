@@ -25,8 +25,14 @@ StateInfoWebsite:
     To run, open index.html in a webbrowser.
     
 BearGridGame:
-    My most involved developed game and also my most basic in terms of graphics or aesthetics.. 
+    My most involved developed game and also my most basic in terms of graphics or aesthetics.
     The player is an '@' symbol who plays with the goal of surviving the bears, the 'B' symbols.
     The player can create tools, collect resourses, build structures, and defend themselves against the bears with weapons.
     Developed completely in the C programming language in my first year learning Software Engineering.
     To run, execute .c file. I used Cygwin and the commands gcc Game_1.c, ./Game_1.exe
+
+SudokuSolver:
+    I engineered a robust C++ program capable of solving any Sudoku board by leveraging advanced backtracking algorithms.
+    This code is also a demestration of using testing to validate results.
+    To run, using Cygwin, compile with g++ Sudoku.hpp then run with ./Sudoku.exe
+    The program will output the test results of the google test.  

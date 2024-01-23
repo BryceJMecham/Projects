@@ -1,0 +1,204 @@
+/************************************************* 
+* Class Title: Sudoku
+*
+* Author: Bryce Mecham
+* 
+* Summary: Loops recursivly and backtracks until it finds a solution to 
+*			a sudoku game.
+* 
+* Compile instructions:  Sudoku.hpp is given. Use google test to test.
+************************************************** 
+* Pseudocode
+* 
+* Begin 
+* Initializes all squares of the 9x9 matrix with 0
+* Produces a valid solution to the generated puzzle 
+*  (returns true on success, false on failure)
+* k represents the to be written number
+* backtrack algrithm
+* Prints the 9 x 9 grid 
+* 1. Takes an open ifstream and object of the Sudoku object 
+* 2. Reads 81 numbers arranged in 9x9 in the input file, and populate 
+*    the object’s grid data structure.
+* check to see if any number is valid
+* if no solution
+*	row check
+*   column check
+*	3x3 area check
+* End
+*************************************************/
+
+
+#include <iostream>
+
+using namespace std;
+
+int check(int k, int i, int j, int board[][9][2]);
+
+class Sudoku{
+private:
+	int board[9][9][2];
+public:
+	Sudoku( ){
+	//Initializes all squares of the 9x9 matrix with 0
+		for(int i=0; i<9; i++){
+			for(int j=0; j<9; j++){
+				for (int k=0; k<2; k++){
+					board[i][j][k] = 0;
+				}
+			}
+		}
+	}
+	int getValue(int i, int j){
+		return board[i][j][0];
+	}
+	bool solve(){
+		int backtrack = 0;
+	// Produces a valid solution to the generated puzzle 
+	// (returns true on success, false on failure) 
+	  while (1){
+		while (!backtrack){
+			for(int i=0; i<9; i++){
+				for(int j=0; j<9; j++){
+					int k = 0;					//k represents the to be written number
+					if (board[i][j][0] == 0){
+						board[i][j][1] = 1; 
+						board[i][j][0] = check((k+1), i, j, board);
+						if (board[i][j][0] == 0){
+							backtrack = 1;
+							board[i][j][1] = 0;
+							i = 9;
+							j = 9;
+						}
+					}
+					//if board is complete return 1
+					if (i==8 && j==8)
+					return 1;
+				}
+			}
+		}
+		//backtrack algrithm 
+		while (backtrack) {
+			for(int i=8; i>=0; i--){
+				for(int j=8; j>=0; j--){
+					int k = 0;					//k represents the to be written number
+					if (board[i][j][1] == 1){
+						k = board[i][j][0]; 
+						board[i][j][0] = check((k+1), i, j, board);
+						if (board[i][j][0] == 0){
+							backtrack = 1;
+							board[i][j][1] = 0;	
+						}
+						else{
+							backtrack = 0;
+							j = -1;
+							i = -1;
+						}
+					}
+					//if there is absolutly no solution return 0
+					if (i==0 && j==0)
+						return 0;
+				}
+			}
+		}
+	}
+		return 1;
+	}
+	void printGrid(){
+	//Prints the 9 x 9 grid 
+		for(int i=0; i<9; i++){
+			for(int j=0; j<9; j++){
+				cout << board[i][j][0] << "  ";
+			}
+			cout << endl;
+		}
+	}
+	friend istream &operator>>(istream &input, Sudoku &s){
+		int c;
+
+	//1. Takes an open ifstream and object of the Sudoku object 
+	//2. Reads 81 numbers arranged in 9x9 in the input file, and populate 
+	//   the object’s grid data structure. 
+	
+		for ( int i =0; i< 9; i++){ //row
+			for ( int j =0; j< 9; j++){ // column
+			
+		if (input >> c)
+				s.board[i][j][0] = c;
+			else 
+				return input;
+		    }
+		}	
+		return input;
+	}
+};
+
+//check to see if any number is valid
+int check(int k, int i, int j, int board[][9][2]){
+		
+	board[i][j][0] = k;
+	//if no solution
+	if (k > 9)
+		return 0;
+	//row check
+	for(int n=0; n<9; n++){
+		if(n != j ){
+			if (board[i][n][0] == k){
+				return check((k+1), i, j, board);
+			}
+		}
+	}
+	//column check
+		for(int m=0; m<9; m++){
+			if(m != i){
+				if (board[m][j][0] == k){
+					return check((k+1), i, j, board);
+				}
+			}
+		} 
+		//3x3 area check
+	if(i == 2 || i == 5 || i == 8){
+		if(j == 0 || j == 3 || j == 6){
+			if (board[i-1][j][0]==k || board[i-2][j][0]==k || board[i][j+1][0]==k || board[i-1][j+1][0]==k || board[i-2][j+1][0]==k || board[i][j+2][0]==k || board[i-1][j+2][0]==k || board[i-2][j+2][0]==k)
+				return check((k+1), i, j, board);
+		}
+		else if(j == 1 || j == 4 || j == 7){
+			if (board[i-1][j][0]==k || board[i-2][j][0]==k || board[i][j+1][0]==k || board[i-1][j+1][0]==k || board[i-2][j+1][0]==k || board[i][j-1][0]==k || board[i-1][j-1][0]==k || board[i-2][j-1][0]==k)
+				return check((k+1), i, j, board);
+		}
+		else {
+			if (board[i-1][j][0]==k || board[i-2][j][0]==k || board[i][j-1][0]==k || board[i-1][j-1][0]==k || board[i-2][j-1][0]==k || board[i][j-2][0]==k || board[i-1][j-2][0]==k || board[i-2][j-2][0]==k)
+				return check((k+1), i, j, board);
+		}
+	}
+	else if(i == 1 || i == 4 || i == 7){
+		if(j == 0 || j == 3 || j == 6){
+			if (board[i-1][j][0]==k || board[i+1][j][0]==k || board[i][j+1][0]==k || board[i-1][j+1][0]==k || board[i+1][j+1][0]==k || board[i][j+2][0]==k || board[i-1][j+2][0]==k || board[i+1][j+2][0]==k)
+				return check((k+1), i, j, board);
+		}
+		else if(j == 1 || j == 4 || j == 7){
+			if (board[i-1][j][0]==k || board[i+1][j][0]==k || board[i][j+1][0]==k || board[i-1][j+1][0]==k || board[i+1][j+1][0]==k || board[i][j-1][0]==k || board[i-1][j-1][0]==k || board[i+1][j-1][0]==k)
+				return check((k+1), i, j, board);                                                                   
+		}                                                                                                           
+		else {                                                                                                      
+			if (board[i-1][j][0]==k || board[i+1][j][0]==k || board[i][j-1][0]==k || board[i-1][j-1][0]==k || board[i+1][j-1][0]==k || board[i][j-2][0]==k || board[i-1][j-2][0]==k || board[i+1][j-2][0]==k)
+				return check((k+1), i, j, board);
+		}
+	}
+	else {
+		if(j == 0 || j == 3 || j == 6){
+			if (board[i+1][j][0]==k || board[i+2][j][0]==k || board[i][j+1][0]==k || board[i+1][j+1][0]==k || board[i+2][j+1][0]==k || board[i][j+2][0]==k || board[i+1][j+2][0]==k || board[i+2][j+2][0]==k)
+				return check((k+1), i, j, board);
+		}
+		else if(j == 1 || j == 4 || j == 7){
+			if (board[i+1][j][0]==k || board[i+2][j][0]==k || board[i][j+1][0]==k || board[i+1][j+1][0]==k || board[i+2][j+1][0]==k || board[i][j-1][0]==k || board[i+1][j-1][0]==k || board[i+2][j-1][0]==k)
+				return check((k+1), i, j, board);
+		}
+		else {
+			if (board[i+1][j][0]==k || board[i+2][j][0]==k || board[i][j-1][0]==k || board[i+1][j-1][0]==k || board[i+2][j-1][0]==k || board[i][j-2][0]==k || board[i+1][j-2][0]==k || board[i+2][j-2][0]==k)
+				return check((k+1), i, j, board);
+		}
+	}
+	return k;
+
+}
