@@ -16,6 +16,36 @@ body {
   background-size: cover;
 }
 
+.para4 {
+	min-height: 300px;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(slc-large.jpg);
+}
+
+.para3 {
+	min-height: 600px;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(bg-large.jpg);
+}
+
+.para2 {
+	min-height: 300px;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(logan-large.jpg);
+}
+
 #slcbgimg{
   background-image: url(slc-large.jpg);
   background-size: 100vw 100vh;
@@ -34,12 +64,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.bodygrid {
-  display: grid;
-  grid-template-columns: auto 400px;
-  grid-template-areas: ". ." "section aside";
-  grid-gap: 5px;
-}
+
 
 header {
   grid-area: header;
@@ -140,11 +165,8 @@ nav img {
 }
 
 section {
-  grid-area: section;
-  padding: 15px;
-  border: 1px solid darkgray;
-  border-radius: 4px;
-  background-color: lightyellow;
+
+
 
 }
 
@@ -162,7 +184,6 @@ section div, section h3 {
 }
 
 aside {
-  grid-area: aside;
   padding: 10px;
   border: 1px solid darkgray;
   border-radius: 4px;
