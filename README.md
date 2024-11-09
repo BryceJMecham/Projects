@@ -3,7 +3,7 @@ This repository is a compilation of my favorite projects I've worked on by mysel
 
 
 Game_3to14:
-    Personal project to recrate electronically a family card game.
+    Personal project to recreate a family card game.
     Uses HTML, CSS, and JavaScript.
     To run, open 3to14.html in a webbrowser.
 
